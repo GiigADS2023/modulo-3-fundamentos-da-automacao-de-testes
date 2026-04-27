@@ -1,0 +1,60 @@
+========================================
+📘 PLAYWRIGHT - ESTUDOS
+========================================
+
+===================================================================================================
+🔹 AÇÕES (ACTIONS) - Simula a ação do usuário, como clicar em um botão ou preencher um formulário.
+====================================================================================================
+    ● Navegar para uma página 
+        await page.goto('https://www.saucedemo.com/');
+
+    ● Preencher campos de texto 
+        await page.fill('[data-test="username"]', 'standard_user');
+        await page.fill('[data-test="password"]', 'secret_sauce');
+
+    ● Clicar em um botão 
+        await page.click('[data-test="login-button"]');
+
+    ● Obter o título da página 
+        const titulo = await page.title(); // Retorna: "Swag Labs"
+
+    ● Pressionar uma tecla 
+        await page.keyboard.press('Enter');
+
+============================================================================================
+🔹 VALIDAÇÕES (ASSERTIONS) - Valida se o resultado esperado da ação atende às expectativas.
+============================================================================================
+    ● Verifica o título da página 
+        await expect(page).toHaveTitle('Swag Labs');
+
+    ● Verifica a URL após login 
+        await expect(page).toHaveURL(/inventory.html/);
+
+    ● Verifica se um elemento está visível 
+        await expect(page.locator('[data-test="inventory_container"]')).toBeVisible();
+
+    ● Verifica o texto EXATO de erro 
+        await expect(page.locator('[data-test="error"]')).toHaveText(
+            'Epic sadface: Username and password do not match any user in this service'
+        );
+
+    ● Verifica que contém um texto 
+        await expect(page.locator('[data-test="error"]')).toContainText('Epic sadface');
+
+    ● Verifica se um elemento está desabilitado 
+        await expect(page.locator('[data-test="login-button"]')).toBeDisabled();
+
+=========================================================================
+🔹 PADRÃO AAA - Prepara o estado, executar a ação e validar o resultado.
+    -> Arrange: preparar o ambiente
+    -> Act: executar a ação
+    -> Assert: validar o resultado
+=========================================================================
+    ● ARRANGE (Preparação) 
+        await page.goto('https://www.saucedemo.com/');
+
+    ● ACT (Ação) 
+        const titulo = await page.title();
+
+    ● ASSERT (Validação) 
+        await expect(page).toHaveTitle('Swag Labs');
