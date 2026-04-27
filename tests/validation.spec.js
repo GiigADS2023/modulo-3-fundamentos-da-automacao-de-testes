@@ -3,6 +3,8 @@
 import { test, expect } from '@playwright/test';
 
 test('Exemplo de validação', async ({page}) => {
+    await page.goto('https://www.saucedemo.com/');
+
     /* Verifica o título da página */
     await expect(page).toHaveTitle('Swag Labs');
     
