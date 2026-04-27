@@ -6,7 +6,7 @@
 */
 import { test, expect } from '@playwright/test';
 
-test('deve exibir o título correto da página', async ({ page }) => {
+test('Deve exibir o título correto da página', async ({ page }) => {
   /* ARRANGE */
   await page.goto('https://www.saucedemo.com/');
 
